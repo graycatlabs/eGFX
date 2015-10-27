@@ -1,4 +1,5 @@
 #include <stdlib.h>
+
 #include "eGFX_DataTypes.h"
 
 
@@ -22,12 +23,12 @@
 #define eGFX_CALCULATE_24BPP_BUFFER_ROW_BYTE_SIZE(x)	 	 (x*3)
 #define	eGFX_CALCULATE_32BPP_BUFFER_ROW_BYTE_SIZE(x)	 	 (x*4)
 
-#define eGFX_CALCULATE_1BPP_IMAGE_STORAGE_SPACE_SIZE(x,y)   (eGFX_CALCULATE_1BPP_BUFFER_ROW_BYTE_SIZE(x)	* y)
-#define eGFX_CALCULATE_4BPP_IMAGE_STORAGE_SPACE_SIZE(x,y)   (eGFX_CALCULATE_4BPP_BUFFER_ROW_BYTE_SIZE(x)	* y)
-#define eGFX_CALCULATE_8BPP_IMAGE_STORAGE_SPACE_SIZE(x,y)   (eGFX_CALCULATE_8BPP_BUFFER_ROW_BYTE_SIZE(x)	* y)
-#define eGFX_CALCULATE_16BPP_IMAGE_STORAGE_SPACE_SIZE(x,y)  (eGFX_CALCULATE_16BPP_BUFFER_ROW_BYTE_SIZE(x)	* y)
-#define eGFX_CALCULATE_24BPP_IMAGE_STORAGE_SPACE_SIZE(x,y)  (eGFX_CALCULATE_24PP_BUFFER_ROW_BYTE_SIZE(x)	* y)
-#define eGFX_CALCULATE_32BPP_IMAGE_STORAGE_SPACE_SIZE(x,y)  (eGFX_CALCULATE_32PP_BUFFER_ROW_BYTE_SIZE(x)	* y)
+#define eGFX_CALCULATE_1BPP_IMAGE_STORAGE_SPACE_SIZE(x,y)    (eGFX_CALCULATE_1BPP_BUFFER_ROW_BYTE_SIZE(x)	* y)
+#define eGFX_CALCULATE_4BPP_IMAGE_STORAGE_SPACE_SIZE(x,y)    (eGFX_CALCULATE_4BPP_BUFFER_ROW_BYTE_SIZE(x)	* y)
+#define eGFX_CALCULATE_8BPP_IMAGE_STORAGE_SPACE_SIZE(x,y)    (eGFX_CALCULATE_8BPP_BUFFER_ROW_BYTE_SIZE(x)	* y)
+#define eGFX_CALCULATE_16BPP_IMAGE_STORAGE_SPACE_SIZE(x,y)   (eGFX_CALCULATE_16BPP_BUFFER_ROW_BYTE_SIZE(x)	* y)
+#define eGFX_CALCULATE_24BPP_IMAGE_STORAGE_SPACE_SIZE(x,y)   (eGFX_CALCULATE_24PP_BUFFER_ROW_BYTE_SIZE(x)	* y)
+#define eGFX_CALCULATE_32BPP_IMAGE_STORAGE_SPACE_SIZE(x,y)   (eGFX_CALCULATE_32PP_BUFFER_ROW_BYTE_SIZE(x)	* y)
 
 #define ROUND_TO_INT16_T(x)	((int16_t)(x + 0.5f))
 
@@ -255,13 +256,8 @@ int16_t  eGFX_printf(eGFX_ImagePlane *Image,
                      int16_t StartX,
                      int16_t StartY,
                      const eGFX_Font *MyFont,
+                     
                      char *FormatString,...);
-
-void  eGFX_HorizontalCentered_printf(eGFX_ImagePlane *Image,
-			 int16_t StartY,
-			 const eGFX_Font *MyFont,
-			 char *FormatString,...)
-
 
 int16_t eGFX_DrawString_CustomSpacing(eGFX_ImagePlane *Image,
                                       int16_t StartX,

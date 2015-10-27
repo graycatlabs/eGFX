@@ -1,10 +1,12 @@
+#include "eGFX.h"
+
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdint.h>
 #include <string.h>
 #include "math.h"
+
 #include "eGFX_DataTypes.h"
-#include "eGFX.h"
 
 
 /***
@@ -76,7 +78,8 @@ void eGFX_PutPixel(eGFX_ImagePlane *Image,
                 Offset = (y * MemWidthInBytes) + x;
                 Image->Data[Offset] = ((uint8_t)PS);
                 break;
-		    case  eGFX_IMAGE_PLANE_16BPP:
+
+            case  eGFX_IMAGE_PLANE_16BPP_565:
                 MemWidthInBytes  = Image->SizeX <<1;
                 Offset = (y * MemWidthInBytes) + (x << 1);
                 *(uint16_t *)(Image->Data + Offset) = (uint16_t)(PS);
@@ -151,7 +154,7 @@ eGFX_PixelState eGFX_GetPixel(eGFX_ImagePlane *Image,
                 PS = Image->Data[Offset];
                 break;
 
-            case  eGFX_IMAGE_PLANE_16BPP:
+            case  eGFX_IMAGE_PLANE_16BPP_565:
                 MemWidthInBytes  = Image->SizeX <<1;
                 Offset = (y * MemWidthInBytes) + (x << 1);
                 PS = *(uint16_t *)(Image->Data + Offset);
@@ -1193,24 +1196,6 @@ int16_t  eGFX_printf(eGFX_ImagePlane *Image,
 }
 
 
-void  eGFX_HorizontalCentered_printf(eGFX_ImagePlane *Image,
-										 int16_t StartY,
-										 const eGFX_Font *MyFont,
-										 char *FormatString,...)
-{
-    va_list argptr;
-    va_start(argptr,FormatString);
-#ifdef WIN32
-    sprintf_s((char *)eGFX_StringBuf,eGFX_MAX_PRINTF_BUF_LENGTH,FormatString,argptr);
-#else
-    vsnprintf((char *)eGFX_StringBuf,eGFX_MAX_PRINTF_BUF_LENGTH,FormatString,argptr);
-#endif
-    va_end(argptr);
-
-	eGFX_DrawHorizontalCenteredString(Image,  StartY,eGFX_StringBuf, MyFont);
-
-}
-
 int16_t eGFX_DrawString_CustomSpacing(eGFX_ImagePlane *Image,
                                       int16_t StartX,
                                       int16_t StartY,
@@ -1518,12 +1503,12 @@ void eGFX_ImagePlane_Clear(eGFX_ImagePlane   *Image)
 
             break;
 
-        case  eGFX_IMAGE_PLANE_16BPP:
+        case  eGFX_IMAGE_PLANE_16BPP_565:
             PlaneSpaceSize = eGFX_CALCULATE_16BPP_IMAGE_STORAGE_SPACE_SIZE(Image->SizeX,Image->SizeY);
 
             for(i=0; i<PlaneSpaceSize>>1; i++)
             {
-                ((uint16_t *)(Image->Data))[i] = 0;
+                 ((uint16_t *)(Image->Data))[i] = 0;
             }
 
             break;
