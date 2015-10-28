@@ -44,3 +44,9 @@ Z:\Dropbox\GFX\eGFX\GFX_TOOLS\LibGFX_Tools\bin\Debug\JsonExSerializer.dll
 Z:\Dropbox\GFX\eGFX\GFX_TOOLS\LibGFX_Tools\bin\Debug\JsonExSerializer.xml
 Z:\Dropbox\GFX\eGFX\GFX_TOOLS\LibGFX_Tools\obj\Debug\LibGFX_Tools.dll
 Z:\Dropbox\GFX\eGFX\GFX_TOOLS\LibGFX_Tools\obj\Debug\LibGFX_Tools.pdb
+C:\Users\emh203\Documents\GitHub\eGFX\GFX_TOOLS\LibGFX_Tools\bin\Debug\LibGFX_Tools.dll
+C:\Users\emh203\Documents\GitHub\eGFX\GFX_TOOLS\LibGFX_Tools\bin\Debug\LibGFX_Tools.pdb
+C:\Users\emh203\Documents\GitHub\eGFX\GFX_TOOLS\LibGFX_Tools\bin\Debug\JsonExSerializer.dll
+C:\Users\emh203\Documents\GitHub\eGFX\GFX_TOOLS\LibGFX_Tools\bin\Debug\JsonExSerializer.xml
+C:\Users\emh203\Documents\GitHub\eGFX\GFX_TOOLS\LibGFX_Tools\obj\Debug\LibGFX_Tools.dll
+C:\Users\emh203\Documents\GitHub\eGFX\GFX_TOOLS\LibGFX_Tools\obj\Debug\LibGFX_Tools.pdb

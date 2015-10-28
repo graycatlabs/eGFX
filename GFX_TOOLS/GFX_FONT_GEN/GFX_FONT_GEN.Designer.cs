@@ -315,7 +315,7 @@
             // TrueTypeRenderingHint
             // 
             this.TrueTypeRenderingHint.FormattingEnabled = true;
-            this.TrueTypeRenderingHint.Location = new System.Drawing.Point(9, 108);
+            this.TrueTypeRenderingHint.Location = new System.Drawing.Point(0, 146);
             this.TrueTypeRenderingHint.Name = "TrueTypeRenderingHint";
             this.TrueTypeRenderingHint.Size = new System.Drawing.Size(244, 21);
             this.TrueTypeRenderingHint.TabIndex = 30;
@@ -323,7 +323,7 @@
             // FontStyleCB
             // 
             this.FontStyleCB.FormattingEnabled = true;
-            this.FontStyleCB.Location = new System.Drawing.Point(6, 146);
+            this.FontStyleCB.Location = new System.Drawing.Point(0, 108);
             this.FontStyleCB.Name = "FontStyleCB";
             this.FontStyleCB.Size = new System.Drawing.Size(244, 21);
             this.FontStyleCB.TabIndex = 31;
@@ -397,9 +397,9 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.FontStyleCB);
             this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.TrueTypeRenderingHint);
             this.groupBox2.Controls.Add(this.FontComboBox);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.TrueTypeRenderingHint);
             this.groupBox2.Controls.Add(this.FontSize);
             this.groupBox2.Location = new System.Drawing.Point(7, 205);
             this.groupBox2.Name = "groupBox2";

@@ -120,11 +120,12 @@ namespace LibGFX_Tools
 
     }
 
-    public enum eGFX_ImagePlaneType 
+    public enum eGFX_ImagePlaneType
     {
-        eGFX_IMAGE_PLANE_1BPP	= 0,
-        eGFX_IMAGE_PLANE_4BPP	= 1,
-        eGFX_IMAGE_PLANE_8BPP	= 2,
+        eGFX_IMAGE_PLANE_1BPP,
+        eGFX_IMAGE_PLANE_4BPP,
+        eGFX_IMAGE_PLANE_8BPP,
+        eGFX_IMAGE_PLANE_16BPP_565,
     }
 
     public class eGFX_ImagePlane
@@ -136,12 +137,14 @@ namespace LibGFX_Tools
         
         public int eGFX_CALCULATE_1BPP_BUFFER_ROW_BYTE_SIZE(int x)		{ return ((x+7)>>3); } //We add 8 to round up to the next even byte boundary
         public int eGFX_CALCULATE_4BPP_BUFFER_ROW_BYTE_SIZE(int x)		{ return ((x+1)>>1); } //We add 1 to round up to the next even byte boundary
-        public int eGFX_CALCULATE_8BPP_BUFFER_ROW_BYTE_SIZE(int x)		{ return  (x); }
+        public int eGFX_CALCULATE_8BPP_BUFFER_ROW_BYTE_SIZE(int x)	 	{ return  (x); }
+        public int eGFX_CALCULATE_16BPP_BUFFER_ROW_BYTE_SIZE(int x)     { return  (x*2); }
 
 
         public int eGFX_CALCULATE_1BPP_IMAGE_STORAGE_SPACE_SIZE(int x, int y)   { return (eGFX_CALCULATE_1BPP_BUFFER_ROW_BYTE_SIZE(x)	* y);}
         public int eGFX_CALCULATE_4BPP_IMAGE_STORAGE_SPACE_SIZE(int x, int y)   { return (eGFX_CALCULATE_4BPP_BUFFER_ROW_BYTE_SIZE(x)	* y);}
         public int eGFX_CALCULATE_8BPP_IMAGE_STORAGE_SPACE_SIZE(int x, int y)   { return (eGFX_CALCULATE_8BPP_BUFFER_ROW_BYTE_SIZE(x)	* y);}
+        public int eGFX_CALCULATE_16BPP_IMAGE_STORAGE_SPACE_SIZE(int x, int y)  { return (eGFX_CALCULATE_16BPP_BUFFER_ROW_BYTE_SIZE(x)  * y); }
 
         static public string GetImagePlaneTypePrefix(eGFX_ImagePlaneType IPT)
          {
@@ -158,6 +161,9 @@ namespace LibGFX_Tools
                     break;
                 case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_8BPP:
                     s = "_8BPP";
+                    break;
+                case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_16BPP_565:
+                    s = "_16BPP_565";
                     break;
             }
 
@@ -184,6 +190,10 @@ namespace LibGFX_Tools
 
                 case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_8BPP:
                     Data = new byte[eGFX_CALCULATE_8BPP_BUFFER_ROW_BYTE_SIZE(x) * y];
+                    break;
+
+                case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_16BPP_565:
+                    this.Data = new byte[this.eGFX_CALCULATE_16BPP_BUFFER_ROW_BYTE_SIZE(x) * y];
                     break;
             }
            
@@ -251,7 +261,14 @@ namespace LibGFX_Tools
                             Offset = (y * MemWidthInBytes) + x;
                             Data[Offset] = ((byte)PS);
                             break;
-			
+
+                        case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_16BPP_565:
+                            MemWidthInBytes = SizeX * 2;
+                            Offset = (y * MemWidthInBytes) + (x*2);
+                            Data[Offset] = ((byte)PS);
+                            Data[Offset + 1] = ((byte)(PS>>8));
+                            break;
+
                         default:
                             break;
                     }
@@ -304,7 +321,15 @@ namespace LibGFX_Tools
                         Offset = (y * MemWidthInBytes) + x;
                         PS = Data[Offset];
                         break;
-			
+
+                    case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_16BPP_565:
+                        MemWidthInBytes = this.SizeX * 2;
+                        Offset = (y * MemWidthInBytes) + (x * 2);
+                        PS = (uint)Data[Offset] + ((uint)Data[Offset + 1] << 8);
+                        break;
+
+
+
                     default:
                         break;
                 }
@@ -1031,7 +1056,8 @@ namespace LibGFX_Tools
                                 Color PixelColor = NextBmp.GetPixel(x, y);
 
                                 UInt32 Y = (UInt32)((PixelColor.R * 0.299) + (PixelColor.G * 0.587) + (PixelColor.B * 0.114));
-
+                                UInt32 P_565 = (uint)(((int)PixelColor.R >> 3 << 11) + ((int)PixelColor.G >> 2 << 5) + ((int)PixelColor.B >> 3));
+                              
                                 switch(NextSprite.Type)
                                 {
                                     case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_1BPP:
@@ -1056,6 +1082,11 @@ namespace LibGFX_Tools
                                     case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_8BPP:
                                              NextSprite.PutPixel(x, y, Y);  
                                         break;
+
+                                    case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_16BPP_565:
+                                        NextSprite.PutPixel(x, y, P_565);
+                                        break;
+
                                 }
                                 
                                 

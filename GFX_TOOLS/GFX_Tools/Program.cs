@@ -28,10 +28,10 @@ namespace LibGFX_Tools
         {
             Console.WriteLine("");
             Console.WriteLine("************************************************************************");
-            Console.WriteLine("eGFX_Tools Usage:                                						   ");
-            Console.WriteLine("eGFX_Tools  Command  Argument1 Argument2 .....       					   ");
-            Console.WriteLine("                                                         			   ");
-            Console.WriteLine("Command List:                                            			   ");
+            Console.WriteLine("eGFX_Tools Usage:                                \t\t\t\t\t\t   ");
+            Console.WriteLine("eGFX_Tools  Command  Argument1 Argument2 .....       \t\t\t\t\t   ");
+            Console.WriteLine("                                                         \t\t\t   ");
+            Console.WriteLine("Command List:                                            \t\t\t   ");
             Console.WriteLine("------------------------------------------------------------------------");
             Console.WriteLine("GenerateSprites -- Generates .c and .h files from a folder of .png files");
             Console.WriteLine("                                                                        ");
@@ -44,9 +44,10 @@ namespace LibGFX_Tools
             Console.WriteLine("             1BPP                                                       ");
             Console.WriteLine("             4BPP.                                                      ");
             Console.WriteLine("             8BPP.                                                      ");
+            Console.WriteLine("             16BPP_565                                                  ");
             Console.WriteLine("             all                                                        ");
-            Console.WriteLine("                                                          			   ");
-            Console.WriteLine("FontBuilder -- Generates .c and .h files from SrcImages  			   ");
+            Console.WriteLine("                                                          \t\t\t   ");
+            Console.WriteLine("FontBuilder -- Generates .c and .h files from SrcImages  \t\t\t   ");
             Console.WriteLine("                                                                        ");
             Console.WriteLine("Argument:   Path to folder that has the font data                       ");
             Console.WriteLine("            There should be FontConfiguration.jsx in the folder.        ");
@@ -60,17 +61,16 @@ namespace LibGFX_Tools
             Console.WriteLine("            folder. The .c and .h files will have the same base         ");
             Console.WriteLine("            file name as the input folder.                              ");
             Console.WriteLine("                                                                        ");
-            Console.WriteLine("InitFont  --Generates an Example Template				        	   ");
+            Console.WriteLine("InitFont  --Generates an Example Template\t\t\t\t        \t   ");
             Console.WriteLine("                                                                        ");
             Console.WriteLine("Argument1:   Path to folder that the font tempalte                      ");
             Console.WriteLine("Argument2:   Width of the font characters                               ");
             Console.WriteLine("Argument3:   Height of the font characters                              ");
             Console.WriteLine("                                                                         ");
             Console.WriteLine("                                                                        ");
-            Console.WriteLine("SliceDice  --Slices and dices an image into smaller pieces       	   ");
+            Console.WriteLine("SliceDice  --Slices and dices an image into smaller pieces       \t   ");
             Console.WriteLine("                                                                        ");
             Console.WriteLine("Argument1:   Path to configuration file                                   ");
-       
             Console.WriteLine("************************************************************************");
             Console.WriteLine("");
         }
@@ -151,18 +151,19 @@ namespace LibGFX_Tools
                                         
                                         break;
 
+                                    case "16BPP_565":
+                                        MyGFX_Tools.GenerateSprites(args[1], eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_16BPP_565);
+                                        break;
+                                   
                                     case "all":
-                                        
                                         MyGFX_Tools.GenerateSprites(args[1], eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_1BPP);
-
                                         MyGFX_Tools.GenerateSprites(args[1], eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_4BPP);
-
                                         MyGFX_Tools.GenerateSprites(args[1], eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_8BPP);
-                                        
+                                        MyGFX_Tools.GenerateSprites(args[1], eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_16BPP_565);
                                         break;
 
                                     default:
-                                        PostMessages(args[2] + " is nota  valid plane type");
+                                        PostMessages(args[2] + " is not a  valid plane type");
                                   
                                         break;
                                 }
