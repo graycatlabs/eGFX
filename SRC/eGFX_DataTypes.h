@@ -1,5 +1,5 @@
 #include "stdint.h"
-
+#include "lpc_types.h"
 #ifndef eGFX_DATA_TYPES_H
 #define eGFX_DATA_TYPES_H
 
@@ -12,20 +12,16 @@ typedef int16_t FIXED_9_6;
 typedef int16_t FIXED_0_15;
 typedef int16_t FIXED_1_14;
 
-#ifndef TRUE
-#define TRUE 1
-#endif
 
-#ifndef FALSE
-#define FALSE 0
-#endif
+#define eGFX_IMAGE_PLANE_1BPP		 0
+#define eGFX_IMAGE_PLANE_4BPP		 1
+#define eGFX_IMAGE_PLANE_8BPP		 2
+#define eGFX_IMAGE_PLANE_16BPP_565    3
 
-#define eGFX_IMAGE_PLANE_1BPP	 0
-#define eGFX_IMAGE_PLANE_4BPP	 1
-#define eGFX_IMAGE_PLANE_8BPP	 2
-#define eGFX_IMAGE_PLANE_16BPP    3
 #define eGFX_IMAGE_PLANE_24BPP    4
 #define eGFX_IMAGE_PLANE_32BPP    5
+
+
 
 typedef struct
 {
@@ -74,7 +70,7 @@ typedef struct
 
 typedef struct
 {
-    eGFX_ImagePlane *CharacterSprites[0x80-0x20];
+    const eGFX_ImagePlane *CharacterSprites[0x80-0x20];
   
 	//Some TT Metrics
 	int32_t Ascent; //Ascent scaled up by 65536 to store fractional value		(Q15.16)
