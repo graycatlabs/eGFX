@@ -45,6 +45,9 @@ namespace LibGFX_Tools
             Console.WriteLine("             4BPP.                                                      ");
             Console.WriteLine("             8BPP.                                                      ");
             Console.WriteLine("             16BPP_565                                                  ");
+            Console.WriteLine("             24BPP                                                      ");
+            Console.WriteLine("             32BPP                                                      ");
+
             Console.WriteLine("             all                                                        ");
             Console.WriteLine("                                                          \t\t\t   ");
             Console.WriteLine("FontBuilder -- Generates .c and .h files from SrcImages  \t\t\t   ");
@@ -154,12 +157,25 @@ namespace LibGFX_Tools
                                     case "16BPP_565":
                                         MyGFX_Tools.GenerateSprites(args[1], eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_16BPP_565);
                                         break;
+
+                                    case "24BPP":
+                                        MyGFX_Tools.GenerateSprites(args[1], eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_24BPP);
+                                        break;
+
+                                    case "32BPP":
+                                        MyGFX_Tools.GenerateSprites(args[1], eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_32BPP);
+                                        break;
                                    
+
                                     case "all":
+                                        
                                         MyGFX_Tools.GenerateSprites(args[1], eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_1BPP);
                                         MyGFX_Tools.GenerateSprites(args[1], eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_4BPP);
                                         MyGFX_Tools.GenerateSprites(args[1], eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_8BPP);
                                         MyGFX_Tools.GenerateSprites(args[1], eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_16BPP_565);
+                                        MyGFX_Tools.GenerateSprites(args[1], eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_24BPP);
+                                        MyGFX_Tools.GenerateSprites(args[1], eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_32BPP);
+                          
                                         break;
 
                                     default:

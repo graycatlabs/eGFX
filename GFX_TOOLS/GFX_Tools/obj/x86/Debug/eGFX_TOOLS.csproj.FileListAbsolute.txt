@@ -19,3 +19,10 @@ C:\Users\emh203\Documents\GitHub\eGFX\GFX_TOOLS\GFX_Tools\bin\Debug\LibGFX_Tools
 C:\Users\emh203\Documents\GitHub\eGFX\GFX_TOOLS\GFX_Tools\obj\x86\Debug\eGFX_TOOLS.csprojResolveAssemblyReference.cache
 C:\Users\emh203\Documents\GitHub\eGFX\GFX_TOOLS\GFX_Tools\obj\x86\Debug\GFX_Tools.exe
 C:\Users\emh203\Documents\GitHub\eGFX\GFX_TOOLS\GFX_Tools\obj\x86\Debug\GFX_Tools.pdb
+C:\Users\ehughes\Documents\GitHub\eGFX\GFX_TOOLS\GFX_Tools\bin\Debug\GFX_Tools.exe
+C:\Users\ehughes\Documents\GitHub\eGFX\GFX_TOOLS\GFX_Tools\bin\Debug\GFX_Tools.pdb
+C:\Users\ehughes\Documents\GitHub\eGFX\GFX_TOOLS\GFX_Tools\bin\Debug\LibGFX_Tools.dll
+C:\Users\ehughes\Documents\GitHub\eGFX\GFX_TOOLS\GFX_Tools\bin\Debug\LibGFX_Tools.pdb
+C:\Users\ehughes\Documents\GitHub\eGFX\GFX_TOOLS\GFX_Tools\obj\x86\Debug\eGFX_TOOLS.csprojResolveAssemblyReference.cache
+C:\Users\ehughes\Documents\GitHub\eGFX\GFX_TOOLS\GFX_Tools\obj\x86\Debug\GFX_Tools.exe
+C:\Users\ehughes\Documents\GitHub\eGFX\GFX_TOOLS\GFX_Tools\obj\x86\Debug\GFX_Tools.pdb

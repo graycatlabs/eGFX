@@ -126,6 +126,9 @@ namespace LibGFX_Tools
         eGFX_IMAGE_PLANE_4BPP,
         eGFX_IMAGE_PLANE_8BPP,
         eGFX_IMAGE_PLANE_16BPP_565,
+        eGFX_IMAGE_PLANE_24BPP,
+        eGFX_IMAGE_PLANE_32BPP,
+
     }
 
     public class eGFX_ImagePlane
@@ -137,14 +140,18 @@ namespace LibGFX_Tools
         
         public int eGFX_CALCULATE_1BPP_BUFFER_ROW_BYTE_SIZE(int x)		{ return ((x+7)>>3); } //We add 8 to round up to the next even byte boundary
         public int eGFX_CALCULATE_4BPP_BUFFER_ROW_BYTE_SIZE(int x)		{ return ((x+1)>>1); } //We add 1 to round up to the next even byte boundary
-        public int eGFX_CALCULATE_8BPP_BUFFER_ROW_BYTE_SIZE(int x)	 	{ return  (x); }
-        public int eGFX_CALCULATE_16BPP_BUFFER_ROW_BYTE_SIZE(int x)     { return  (x*2); }
+        public int eGFX_CALCULATE_8BPP_BUFFER_ROW_BYTE_SIZE(int x)	 	{ return (x); }
+        public int eGFX_CALCULATE_16BPP_BUFFER_ROW_BYTE_SIZE(int x)     { return (x * 2); }
+        public int eGFX_CALCULATE_24BPP_BUFFER_ROW_BYTE_SIZE(int x)      { return (x * 3); }
+        public int eGFX_CALCULATE_32BPP_BUFFER_ROW_BYTE_SIZE(int x)     { return (x * 4); }
 
 
         public int eGFX_CALCULATE_1BPP_IMAGE_STORAGE_SPACE_SIZE(int x, int y)   { return (eGFX_CALCULATE_1BPP_BUFFER_ROW_BYTE_SIZE(x)	* y);}
         public int eGFX_CALCULATE_4BPP_IMAGE_STORAGE_SPACE_SIZE(int x, int y)   { return (eGFX_CALCULATE_4BPP_BUFFER_ROW_BYTE_SIZE(x)	* y);}
         public int eGFX_CALCULATE_8BPP_IMAGE_STORAGE_SPACE_SIZE(int x, int y)   { return (eGFX_CALCULATE_8BPP_BUFFER_ROW_BYTE_SIZE(x)	* y);}
         public int eGFX_CALCULATE_16BPP_IMAGE_STORAGE_SPACE_SIZE(int x, int y)  { return (eGFX_CALCULATE_16BPP_BUFFER_ROW_BYTE_SIZE(x)  * y); }
+        public int eGFX_CALCULATE_24BPP_IMAGE_STORAGE_SPACE_SIZE(int x, int y)  { return (eGFX_CALCULATE_24BPP_BUFFER_ROW_BYTE_SIZE(x) * y); }
+        public int eGFX_CALCULATE_32BPP_IMAGE_STORAGE_SPACE_SIZE(int x, int y) { return (eGFX_CALCULATE_32BPP_BUFFER_ROW_BYTE_SIZE(x) * y); }
 
         static public string GetImagePlaneTypePrefix(eGFX_ImagePlaneType IPT)
          {
@@ -164,6 +171,12 @@ namespace LibGFX_Tools
                     break;
                 case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_16BPP_565:
                     s = "_16BPP_565";
+                    break;
+                case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_24BPP:
+                    s = "_24BPP";
+                    break;
+                case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_32BPP:
+                    s = "_32BPP";
                     break;
             }
 
@@ -194,6 +207,14 @@ namespace LibGFX_Tools
 
                 case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_16BPP_565:
                     this.Data = new byte[this.eGFX_CALCULATE_16BPP_BUFFER_ROW_BYTE_SIZE(x) * y];
+                    break;
+
+                case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_24BPP:
+                    this.Data = new byte[this.eGFX_CALCULATE_24BPP_BUFFER_ROW_BYTE_SIZE(x) * y];
+                    break;
+
+                case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_32BPP:
+                    this.Data = new byte[this.eGFX_CALCULATE_32BPP_BUFFER_ROW_BYTE_SIZE(x) * y];
                     break;
             }
            
@@ -269,6 +290,26 @@ namespace LibGFX_Tools
                             Data[Offset + 1] = ((byte)(PS>>8));
                             break;
 
+                        case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_24BPP:
+                            MemWidthInBytes = SizeX * 3;
+                            Offset = (y * MemWidthInBytes) + (x * 3);
+                            Data[Offset] = ((byte)PS);
+                            Data[Offset + 1] = ((byte)(PS >> 8));
+                            Data[Offset + 2] = ((byte)(PS >> 16));
+
+                            break;
+
+                        case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_32BPP:
+                            MemWidthInBytes = SizeX * 4;
+                            Offset = (y * MemWidthInBytes) + (x * 4);
+                            Data[Offset] = ((byte)PS);
+                            Data[Offset + 1] = ((byte)(PS >> 8));
+                            Data[Offset + 2] = ((byte)(PS >> 16));
+                            Data[Offset + 3] = ((byte)(PS >> 24));
+
+                            break;
+
+
                         default:
                             break;
                     }
@@ -328,7 +369,24 @@ namespace LibGFX_Tools
                         PS = (uint)Data[Offset] + ((uint)Data[Offset + 1] << 8);
                         break;
 
+                    case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_24BPP:
+                        MemWidthInBytes = this.SizeX * 3;
+                        Offset = (y * MemWidthInBytes) + (x * 3);
+                        PS = (uint)Data[Offset] +
+                             ((uint)Data[Offset + 1] << 8) +
+                             ((uint)Data[Offset + 2] << 16);
+                       
+                        break;
 
+                    case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_32BPP:
+                        MemWidthInBytes = this.SizeX * 4;
+                        Offset = (y * MemWidthInBytes) + (x * 4);
+                        PS = (uint)Data[Offset] + 
+                             ((uint)Data[Offset + 1] << 8)  +
+                             ((uint)Data[Offset + 2] << 16) +
+                             ((uint)Data[Offset + 3] << 24) ;
+
+                        break;
 
                     default:
                         break;
@@ -465,7 +523,7 @@ namespace LibGFX_Tools
                     for (int y = 0; y < section.Height; y++)
                     {
                         bmp.SetPixel(x, y,
-                                         srcBitmap.GetPixel(x + section.X, y + section.Y));
+                         srcBitmap.GetPixel(x + section.X, y + section.Y));
 
                     }
                 }
@@ -1057,7 +1115,18 @@ namespace LibGFX_Tools
 
                                 UInt32 Y = (UInt32)((PixelColor.R * 0.299) + (PixelColor.G * 0.587) + (PixelColor.B * 0.114));
                                 UInt32 P_565 = (uint)(((int)PixelColor.R >> 3 << 11) + ((int)PixelColor.G >> 2 << 5) + ((int)PixelColor.B >> 3));
-                              
+
+                                UInt32 P_24 = (uint)(((int)PixelColor.R) +
+                                              ((int)PixelColor.G<<8)     + 
+                                              ((int)PixelColor.B<<24));
+
+                                UInt32 P_32 = (uint)(((int)PixelColor.R) +
+                                              ((int)PixelColor.G << 8)   +
+                                              ((int)PixelColor.B << 16) +
+                                              ((int)0xFF << 24));
+
+                                
+
                                 switch(NextSprite.Type)
                                 {
                                     case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_1BPP:
@@ -1086,6 +1155,15 @@ namespace LibGFX_Tools
                                     case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_16BPP_565:
                                         NextSprite.PutPixel(x, y, P_565);
                                         break;
+
+                                    case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_24BPP:
+                                        NextSprite.PutPixel(x, y, P_24);
+                                        break;
+
+                                    case eGFX_ImagePlaneType.eGFX_IMAGE_PLANE_32BPP:
+                                        NextSprite.PutPixel(x, y, P_32);
+                                        break;
+
 
                                 }
                                 

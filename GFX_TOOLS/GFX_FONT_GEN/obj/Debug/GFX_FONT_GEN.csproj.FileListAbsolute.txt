@@ -54,3 +54,16 @@ C:\Users\emh203\Documents\GitHub\eGFX\GFX_TOOLS\GFX_FONT_GEN\obj\Debug\GFX_FONT_
 C:\Users\emh203\Documents\GitHub\eGFX\GFX_TOOLS\GFX_FONT_GEN\obj\Debug\GFX_FONT_GEN.csproj.GenerateResource.Cache
 C:\Users\emh203\Documents\GitHub\eGFX\GFX_TOOLS\GFX_FONT_GEN\obj\Debug\GFX_FONT_GEN.exe
 C:\Users\emh203\Documents\GitHub\eGFX\GFX_TOOLS\GFX_FONT_GEN\obj\Debug\GFX_FONT_GEN.pdb
+C:\Users\ehughes\Documents\GitHub\eGFX\GFX_TOOLS\GFX_FONT_GEN\bin\Debug\GFX_FONT_GEN.exe.config
+C:\Users\ehughes\Documents\GitHub\eGFX\GFX_TOOLS\GFX_FONT_GEN\obj\Debug\GFX_FONT_GEN.exe
+C:\Users\ehughes\Documents\GitHub\eGFX\GFX_TOOLS\GFX_FONT_GEN\obj\Debug\GFX_FONT_GEN.pdb
+C:\Users\ehughes\Documents\GitHub\eGFX\GFX_TOOLS\GFX_FONT_GEN\bin\Debug\GFX_FONT_GEN.exe
+C:\Users\ehughes\Documents\GitHub\eGFX\GFX_TOOLS\GFX_FONT_GEN\bin\Debug\GFX_FONT_GEN.pdb
+C:\Users\ehughes\Documents\GitHub\eGFX\GFX_TOOLS\GFX_FONT_GEN\bin\Debug\LibGFX_Tools.dll
+C:\Users\ehughes\Documents\GitHub\eGFX\GFX_TOOLS\GFX_FONT_GEN\bin\Debug\JsonExSerializer.dll
+C:\Users\ehughes\Documents\GitHub\eGFX\GFX_TOOLS\GFX_FONT_GEN\bin\Debug\LibGFX_Tools.pdb
+C:\Users\ehughes\Documents\GitHub\eGFX\GFX_TOOLS\GFX_FONT_GEN\bin\Debug\JsonExSerializer.xml
+C:\Users\ehughes\Documents\GitHub\eGFX\GFX_TOOLS\GFX_FONT_GEN\obj\Debug\GFX_FONT_GEN.csprojResolveAssemblyReference.cache
+C:\Users\ehughes\Documents\GitHub\eGFX\GFX_TOOLS\GFX_FONT_GEN\obj\Debug\GFX_FONT_GEN.MainForm.resources
+C:\Users\ehughes\Documents\GitHub\eGFX\GFX_TOOLS\GFX_FONT_GEN\obj\Debug\GFX_FONT_GEN.Properties.Resources.resources
+C:\Users\ehughes\Documents\GitHub\eGFX\GFX_TOOLS\GFX_FONT_GEN\obj\Debug\GFX_FONT_GEN.csproj.GenerateResource.Cache
