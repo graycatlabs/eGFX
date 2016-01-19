@@ -1,3 +1,9 @@
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #include <stdlib.h>
 
 #include "eGFX_DataTypes.h"
@@ -27,8 +33,8 @@
 #define eGFX_CALCULATE_4BPP_IMAGE_STORAGE_SPACE_SIZE(x,y)    (eGFX_CALCULATE_4BPP_BUFFER_ROW_BYTE_SIZE(x)	* y)
 #define eGFX_CALCULATE_8BPP_IMAGE_STORAGE_SPACE_SIZE(x,y)    (eGFX_CALCULATE_8BPP_BUFFER_ROW_BYTE_SIZE(x)	* y)
 #define eGFX_CALCULATE_16BPP_IMAGE_STORAGE_SPACE_SIZE(x,y)   (eGFX_CALCULATE_16BPP_BUFFER_ROW_BYTE_SIZE(x)	* y)
-#define eGFX_CALCULATE_24BPP_IMAGE_STORAGE_SPACE_SIZE(x,y)   (eGFX_CALCULATE_24PP_BUFFER_ROW_BYTE_SIZE(x)	* y)
-#define eGFX_CALCULATE_32BPP_IMAGE_STORAGE_SPACE_SIZE(x,y)   (eGFX_CALCULATE_32PP_BUFFER_ROW_BYTE_SIZE(x)	* y)
+#define eGFX_CALCULATE_24BPP_IMAGE_STORAGE_SPACE_SIZE(x,y)   (eGFX_CALCULATE_24BPP_BUFFER_ROW_BYTE_SIZE(x)	* y)
+#define eGFX_CALCULATE_32BPP_IMAGE_STORAGE_SPACE_SIZE(x,y)   (eGFX_CALCULATE_32BPP_BUFFER_ROW_BYTE_SIZE(x)	* y)
 
 #define ROUND_TO_INT16_T(x)	((int16_t)(x + 0.5f))
 
@@ -264,7 +270,19 @@ int16_t eGFX_DrawString_CustomSpacing(eGFX_ImagePlane *Image,
                                       int16_t StartY,
                                       char *String,
                                       const eGFX_Font *MyFont,uint16_t Spacing);
+                                      
+int16_t  eGFX_printf_Colored(eGFX_ImagePlane *Image,
+                     int16_t StartX,
+                     int16_t StartY,
+                     const eGFX_Font *MyFont,
+                     uint32_t Color,
+                     char *FormatString,...);
 
+int16_t  eGFX_printf_HorizontalCentered_Colored(eGFX_ImagePlane *Image,
+                                         int16_t StartY,
+                                        const eGFX_Font *MyFont,
+                                        uint32_t Color,
+                                        char *FormatString,...);
 /***
 *      _____  _                     ____                       _   _
 *     |  __ \| |                   / __ \                     | | (_)
@@ -297,6 +315,12 @@ void eGFX_BlitShaded(eGFX_ImagePlane *Destination,
 					int16_t y,
 					const eGFX_ImagePlane *Sprite,
 					float Shading);
+                    
+void eGFX_BlitColored(eGFX_ImagePlane *Destination,
+                    int16_t x,
+                    int16_t y,
+                    const eGFX_ImagePlane *Sprite,
+                    uint32_t Color);
 
 void eGFX_ScaledBlit(eGFX_ImagePlane *Destination,
                      int16_t x,
@@ -680,5 +704,10 @@ void eGFX_AddObjectCircleF(eGFX_Obj_CircleF * CF,
 void	eGFX_DrawObject_CircleF(eGFX_ImagePlane * Image, eGFX_Obj_CircleF *CircleF_Object);
 
 
-
 #endif
+
+
+#ifdef __cplusplus
+ }
+#endif
+

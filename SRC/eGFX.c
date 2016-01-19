@@ -1,11 +1,10 @@
-#include "eGFX.h"
 
+#include "eGFX.h"
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdint.h>
 #include <string.h>
 #include "math.h"
-
 #include "eGFX_DataTypes.h"
 
 
@@ -19,6 +18,7 @@
  *                                 | |
  *                                 |_|
  */
+
 
 //Note:  All Graphics routines should call Put/Get Pixel for fundamental operations!
 //Routines should not access Image storage space directly!
@@ -85,22 +85,25 @@ void eGFX_PutPixel(eGFX_ImagePlane *Image,
                 *(uint16_t *)(Image->Data + Offset) = (uint16_t)(PS);
                 break;
 
-        		/*
-
             case  eGFX_IMAGE_PLANE_24BPP:
+    
                 MemWidthInBytes  = Image->SizeX * 3;
                 Offset = (y * MemWidthInBytes) + (x*3);
-                Image->Data[Offset] =   ((uint8_t)((PS)&0xFF));
-                Image->Data[Offset+1] = ((uint8_t)((PS>>8)&0xFF));
-                Image->Data[Offset+2] = ((uint8_t)((PS>>16)&0xFF));
-                break;
-
+                memcpy(&Image->Data[Offset],&PS,3);
+    
             case  eGFX_IMAGE_PLANE_32BPP:
                 MemWidthInBytes  = Image->SizeX << 2;
                 Offset = (y * MemWidthInBytes) + (x<<2);
-                *(uint32_t *)(Image + Offset) = (uint32_t)(PS);
-                break;
-				*/
+                if(PS == eGFX_PIXEL_RANDOM)
+                {
+                    *(uint32_t *)(Image->Data + Offset) = (uint32_t)(rand());
+                }
+                else
+                {
+                    *(uint32_t *)(Image->Data + Offset) = (uint32_t)(PS);
+                }
+               break;
+				
             default:
                 break;
         }
@@ -159,7 +162,7 @@ eGFX_PixelState eGFX_GetPixel(eGFX_ImagePlane *Image,
                 Offset = (y * MemWidthInBytes) + (x << 1);
                 PS = *(uint16_t *)(Image->Data + Offset);
                 break;
-            /*
+            
 
             case  eGFX_IMAGE_PLANE_24BPP:
                 MemWidthInBytes  = Image->SizeX * 3;
@@ -172,9 +175,9 @@ eGFX_PixelState eGFX_GetPixel(eGFX_ImagePlane *Image,
             case  eGFX_IMAGE_PLANE_32BPP:
                 MemWidthInBytes  = Image->SizeX << 2;
                 Offset = (y * MemWidthInBytes) + (x<<2);
-                PS = *(uint32_t *)(Image + Offset);
+                PS = *(uint32_t *)(Image->Data + Offset);
                 break;
-				*/
+				
 
             default:
                 break;
@@ -957,6 +960,33 @@ int16_t eGFX_DrawCharacterFaded(eGFX_ImagePlane *Image,
 }
 
 
+int16_t eGFX_DrawCharacterColored(eGFX_ImagePlane *Image,
+                           int16_t StartX,
+                           int16_t StartY,
+                           uint8_t Character,
+                           const eGFX_Font *MyFont,
+                           eGFX_PixelState Color)
+{
+    //eGFX_Font does not contain any of the ASCII control codes
+    if(Character<0x20)
+        return StartX;
+
+    Character = Character - 0x20;
+
+    if(Character == 0x00)
+    {
+		return StartX + (MyFont->CharacterSprites[0]->SizeX);
+	}
+    else
+    {
+        eGFX_BlitColored(Image,StartX,StartY,MyFont->CharacterSprites[Character],Color);
+    }
+
+    StartX += MyFont->CharacterSprites[Character]->SizeX;
+    return StartX;
+}
+
+
 int16_t eGFX_DrawCharacterShaded(eGFX_ImagePlane *Image,
 	int16_t StartX,
 	int16_t StartY,
@@ -1040,6 +1070,8 @@ void eGFX_DrawHorizontalCenteredString(eGFX_ImagePlane *Image,
     StartX = ((int16_t)Image->SizeX - eGFX_GetStringWidth(String,MyFont))>>1;
     eGFX_DrawString(Image,String,StartX,StartY,MyFont);
 }
+
+
 
 int16_t eGFX_DrawRightAlignedCenteredString_CustomSpacing(eGFX_ImagePlane *Image,
         int16_t StartY,
@@ -1174,6 +1206,28 @@ int16_t  eGFX_DrawStringShaded(eGFX_ImagePlane *Image,
 	return StartX + 1;
 }
 
+int16_t  eGFX_DrawStringColored(eGFX_ImagePlane *Image,
+	char *String,
+	int16_t StartX,
+	int16_t StartY,
+	const eGFX_Font *MyFont,
+	uint32_t Color)
+{
+	uint8_t Ptr = 0;
+	uint8_t NextChar;
+	NextChar = String[Ptr];
+
+	while ((NextChar != 0) && (Ptr <eGFX_MAX_STRING_LEN))
+	{
+		StartX = eGFX_DrawCharacterColored(Image, StartX, StartY, NextChar, MyFont, Color);
+		StartX += MyFont->InterCharacterSpacing;
+		Ptr++;
+		NextChar = String[Ptr];
+	}
+
+	return StartX + 1;
+}
+
 
 int16_t  eGFX_printf(eGFX_ImagePlane *Image,
                      int16_t StartX,
@@ -1194,6 +1248,31 @@ int16_t  eGFX_printf(eGFX_ImagePlane *Image,
 	eGFX_DrawString(Image, eGFX_StringBuf, StartX, StartY, MyFont);
     return End;
 }
+
+int16_t  eGFX_printf_HorizontalCentered_Colored(eGFX_ImagePlane *Image,
+                                         int16_t StartY,
+                                        const eGFX_Font *MyFont,
+                                        uint32_t Color,
+                                        char *FormatString,...)
+{
+    int16_t End;
+    int16_t StartX;
+    va_list argptr;
+    va_start(argptr,FormatString);
+#ifdef WIN32
+    sprintf_s((char *)eGFX_StringBuf,eGFX_MAX_PRINTF_BUF_LENGTH,FormatString,argptr);
+#else
+    vsnprintf((char *)eGFX_StringBuf,eGFX_MAX_PRINTF_BUF_LENGTH,FormatString,argptr);
+#endif
+    va_end(argptr);
+    
+    StartX = ((int16_t)Image->SizeX - eGFX_GetStringWidth(eGFX_StringBuf,MyFont))>>1;
+    End = StartX + eGFX_GetStringWidth(eGFX_StringBuf,MyFont) + 1;
+    
+	eGFX_DrawStringColored(Image, eGFX_StringBuf, StartX, StartY, MyFont,Color);
+    return End;
+}
+
 
 
 int16_t eGFX_DrawString_CustomSpacing(eGFX_ImagePlane *Image,
@@ -1305,6 +1384,27 @@ void eGFX_BlitShaded(eGFX_ImagePlane *Destination,
 
 	}
 }
+
+//x,y is a the upper left corner of the blit, not the center
+void eGFX_BlitColored(eGFX_ImagePlane *Destination,
+	int16_t x,
+	int16_t y,
+	const eGFX_ImagePlane *Sprite,
+	uint32_t Color)
+{
+	uint16_t i, j;
+
+	for (j = 0; j<Sprite->SizeY; j++)
+	{
+		for (i = 0; i<Sprite->SizeX; i++)
+		{
+            if(eGFX_GetPixel(Sprite, i, j))
+                eGFX_PutPixel(Destination, x + i, y + j,Color);
+		}
+
+	}
+}
+
 
 
 //Draws a sprite that is scaled.   x,y is a center point, not a corner
@@ -1468,8 +1568,8 @@ void eGFX_ImagePlaneInit(eGFX_ImagePlane   *Image,uint8_t * Store, int16_t SizeX
 
 void eGFX_ImagePlane_Clear(eGFX_ImagePlane   *Image)
 {
-    uint32_t PlaneSpaceSize;
-    uint32_t i;
+    uint32_t PlaneSpaceSize = 0;
+    uint32_t i = 0;
 
     switch(Image->Type)
     {
@@ -1512,26 +1612,28 @@ void eGFX_ImagePlane_Clear(eGFX_ImagePlane   *Image)
             }
 
             break;
- /*
+ 
         case  eGFX_IMAGE_PLANE_24BPP:
             PlaneSpaceSize = eGFX_CALCULATE_24BPP_IMAGE_STORAGE_SPACE_SIZE(Image->SizeX,Image->SizeY);
+                            
+            for(i=0; i<PlaneSpaceSize; i++)
+            {
+                Image->Data[i] = 0;
+            }
+        
+            break;
+        
+        case  eGFX_IMAGE_PLANE_32BPP:
+         
+            PlaneSpaceSize = eGFX_CALCULATE_32BPP_IMAGE_STORAGE_SPACE_SIZE(Image->SizeX,Image->SizeY);
 
             for(i=0; i<PlaneSpaceSize; i++)
             {
                 Image->Data[i] = 0;
             }
 
-        case  eGFX_IMAGE_PLANE_32BPP:
             break;
-            PlaneSpaceSize = eGFX_CALCULATE_32BPP_IMAGE_STORAGE_SPACE_SIZE(Image->SizeX,Image->SizeY);
-
-            for(i=0; i<PlaneSpaceSize>>2; i++)
-            {
-                ((uint32_t *)(Image->Data))[i] = 0;
-            }
-
-            break;
-			*/
+			
         default:
             break;
     }
@@ -2737,4 +2839,5 @@ void eGFX_DrawObjects(eGFX_ImagePlane *IP)
 
 	}
 }
+
 
