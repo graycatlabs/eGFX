@@ -77,14 +77,16 @@
             // FontComboBox
             // 
             this.FontComboBox.FormattingEnabled = true;
-            this.FontComboBox.Location = new System.Drawing.Point(9, 66);
+            this.FontComboBox.Location = new System.Drawing.Point(11, 85);
+            this.FontComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FontComboBox.Name = "FontComboBox";
-            this.FontComboBox.Size = new System.Drawing.Size(244, 21);
+            this.FontComboBox.Size = new System.Drawing.Size(324, 24);
             this.FontComboBox.TabIndex = 4;
             // 
             // FontSize
             // 
-            this.FontSize.Location = new System.Drawing.Point(334, 67);
+            this.FontSize.Location = new System.Drawing.Point(445, 82);
+            this.FontSize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FontSize.Maximum = new decimal(new int[] {
             500,
             0,
@@ -96,7 +98,7 @@
             0,
             0});
             this.FontSize.Name = "FontSize";
-            this.FontSize.Size = new System.Drawing.Size(74, 20);
+            this.FontSize.Size = new System.Drawing.Size(99, 22);
             this.FontSize.TabIndex = 5;
             this.FontSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.FontSize.Value = new decimal(new int[] {
@@ -110,12 +112,13 @@
             this.OutputTextBox.BackColor = System.Drawing.Color.Black;
             this.OutputTextBox.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OutputTextBox.ForeColor = System.Drawing.Color.Yellow;
-            this.OutputTextBox.Location = new System.Drawing.Point(594, 23);
+            this.OutputTextBox.Location = new System.Drawing.Point(792, 28);
+            this.OutputTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.OutputTextBox.Multiline = true;
             this.OutputTextBox.Name = "OutputTextBox";
             this.OutputTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.OutputTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.OutputTextBox.Size = new System.Drawing.Size(548, 617);
+            this.OutputTextBox.Size = new System.Drawing.Size(729, 758);
             this.OutputTextBox.TabIndex = 8;
             this.OutputTextBox.WordWrap = false;
             this.OutputTextBox.TextChanged += new System.EventHandler(this.OutputTextBox_TextChanged);
@@ -128,43 +131,48 @@
             // 
             // OutputFolder
             // 
-            this.OutputFolder.Location = new System.Drawing.Point(6, 39);
+            this.OutputFolder.Location = new System.Drawing.Point(8, 48);
+            this.OutputFolder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.OutputFolder.Name = "OutputFolder";
-            this.OutputFolder.Size = new System.Drawing.Size(526, 20);
+            this.OutputFolder.Size = new System.Drawing.Size(700, 22);
             this.OutputFolder.TabIndex = 9;
             this.OutputFolder.Text = ".\\";
             // 
             // FontBaseName
             // 
-            this.FontBaseName.Location = new System.Drawing.Point(6, 90);
+            this.FontBaseName.Location = new System.Drawing.Point(8, 111);
+            this.FontBaseName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FontBaseName.Name = "FontBaseName";
-            this.FontBaseName.Size = new System.Drawing.Size(188, 20);
+            this.FontBaseName.Size = new System.Drawing.Size(249, 22);
             this.FontBaseName.TabIndex = 10;
             this.FontBaseName.Text = "MY_FONT";
             // 
             // TargetFolderLabel
             // 
             this.TargetFolderLabel.AutoSize = true;
-            this.TargetFolderLabel.Location = new System.Drawing.Point(6, 23);
+            this.TargetFolderLabel.Location = new System.Drawing.Point(8, 28);
+            this.TargetFolderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.TargetFolderLabel.Name = "TargetFolderLabel";
-            this.TargetFolderLabel.Size = new System.Drawing.Size(105, 13);
+            this.TargetFolderLabel.Size = new System.Drawing.Size(141, 17);
             this.TargetFolderLabel.TabIndex = 11;
             this.TargetFolderLabel.Text = "Target Output Folder";
             // 
             // FontNameLabel
             // 
             this.FontNameLabel.AutoSize = true;
-            this.FontNameLabel.Location = new System.Drawing.Point(3, 74);
+            this.FontNameLabel.Location = new System.Drawing.Point(4, 91);
+            this.FontNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.FontNameLabel.Name = "FontNameLabel";
-            this.FontNameLabel.Size = new System.Drawing.Size(86, 13);
+            this.FontNameLabel.Size = new System.Drawing.Size(113, 17);
             this.FontNameLabel.TabIndex = 12;
             this.FontNameLabel.Text = "Font Base Name";
             // 
             // InitFontButton
             // 
-            this.InitFontButton.Location = new System.Drawing.Point(9, 19);
+            this.InitFontButton.Location = new System.Drawing.Point(12, 23);
+            this.InitFontButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.InitFontButton.Name = "InitFontButton";
-            this.InitFontButton.Size = new System.Drawing.Size(75, 38);
+            this.InitFontButton.Size = new System.Drawing.Size(100, 47);
             this.InitFontButton.TabIndex = 13;
             this.InitFontButton.Text = "Initialize Font";
             this.InitFontButton.UseVisualStyleBackColor = true;
@@ -172,7 +180,8 @@
             // 
             // InitFontHeight
             // 
-            this.InitFontHeight.Location = new System.Drawing.Point(113, 30);
+            this.InitFontHeight.Location = new System.Drawing.Point(151, 37);
+            this.InitFontHeight.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.InitFontHeight.Maximum = new decimal(new int[] {
             640,
             0,
@@ -184,7 +193,7 @@
             0,
             0});
             this.InitFontHeight.Name = "InitFontHeight";
-            this.InitFontHeight.Size = new System.Drawing.Size(51, 20);
+            this.InitFontHeight.Size = new System.Drawing.Size(68, 22);
             this.InitFontHeight.TabIndex = 14;
             this.InitFontHeight.Value = new decimal(new int[] {
             5,
@@ -194,7 +203,8 @@
             // 
             // InitFontWidth
             // 
-            this.InitFontWidth.Location = new System.Drawing.Point(195, 30);
+            this.InitFontWidth.Location = new System.Drawing.Point(260, 37);
+            this.InitFontWidth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.InitFontWidth.Maximum = new decimal(new int[] {
             640,
             0,
@@ -206,7 +216,7 @@
             0,
             0});
             this.InitFontWidth.Name = "InitFontWidth";
-            this.InitFontWidth.Size = new System.Drawing.Size(55, 20);
+            this.InitFontWidth.Size = new System.Drawing.Size(73, 22);
             this.InitFontWidth.TabIndex = 15;
             this.InitFontWidth.Value = new decimal(new int[] {
             3,
@@ -217,27 +227,30 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(110, 16);
+            this.label1.Location = new System.Drawing.Point(147, 20);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.Size = new System.Drawing.Size(49, 17);
             this.label1.TabIndex = 16;
             this.label1.Text = "Height";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(192, 14);
+            this.label2.Location = new System.Drawing.Point(256, 17);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(44, 17);
             this.label2.TabIndex = 17;
             this.label2.Text = "Width";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // BuildFontButton
             // 
-            this.BuildFontButton.Location = new System.Drawing.Point(9, 76);
+            this.BuildFontButton.Location = new System.Drawing.Point(12, 94);
+            this.BuildFontButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BuildFontButton.Name = "BuildFontButton";
-            this.BuildFontButton.Size = new System.Drawing.Size(75, 38);
+            this.BuildFontButton.Size = new System.Drawing.Size(100, 47);
             this.BuildFontButton.TabIndex = 18;
             this.BuildFontButton.Text = "Build Font";
             this.BuildFontButton.UseVisualStyleBackColor = true;
@@ -245,9 +258,10 @@
             // 
             // GenerateTT_FontData
             // 
-            this.GenerateTT_FontData.Location = new System.Drawing.Point(9, 19);
+            this.GenerateTT_FontData.Location = new System.Drawing.Point(12, 23);
+            this.GenerateTT_FontData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.GenerateTT_FontData.Name = "GenerateTT_FontData";
-            this.GenerateTT_FontData.Size = new System.Drawing.Size(143, 21);
+            this.GenerateTT_FontData.Size = new System.Drawing.Size(191, 26);
             this.GenerateTT_FontData.TabIndex = 19;
             this.GenerateTT_FontData.Text = "Build TT Font";
             this.GenerateTT_FontData.UseVisualStyleBackColor = true;
@@ -256,9 +270,10 @@
             // BuiladAll_TT_Button
             // 
             this.BuiladAll_TT_Button.Enabled = false;
-            this.BuiladAll_TT_Button.Location = new System.Drawing.Point(9, 46);
+            this.BuiladAll_TT_Button.Location = new System.Drawing.Point(12, 57);
+            this.BuiladAll_TT_Button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BuiladAll_TT_Button.Name = "BuiladAll_TT_Button";
-            this.BuiladAll_TT_Button.Size = new System.Drawing.Size(139, 23);
+            this.BuiladAll_TT_Button.Size = new System.Drawing.Size(185, 28);
             this.BuiladAll_TT_Button.TabIndex = 20;
             this.BuiladAll_TT_Button.Text = "Build all TT from Range";
             this.BuiladAll_TT_Button.UseVisualStyleBackColor = true;
@@ -267,7 +282,8 @@
             // StartingPx
             // 
             this.StartingPx.Enabled = false;
-            this.StartingPx.Location = new System.Drawing.Point(9, 75);
+            this.StartingPx.Location = new System.Drawing.Point(12, 92);
+            this.StartingPx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.StartingPx.Maximum = new decimal(new int[] {
             240,
             0,
@@ -279,7 +295,7 @@
             0,
             0});
             this.StartingPx.Name = "StartingPx";
-            this.StartingPx.Size = new System.Drawing.Size(56, 20);
+            this.StartingPx.Size = new System.Drawing.Size(75, 22);
             this.StartingPx.TabIndex = 21;
             this.StartingPx.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.StartingPx.Value = new decimal(new int[] {
@@ -291,7 +307,8 @@
             // EndingPx
             // 
             this.EndingPx.Enabled = false;
-            this.EndingPx.Location = new System.Drawing.Point(92, 75);
+            this.EndingPx.Location = new System.Drawing.Point(123, 92);
+            this.EndingPx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EndingPx.Maximum = new decimal(new int[] {
             240,
             0,
@@ -303,7 +320,7 @@
             0,
             0});
             this.EndingPx.Name = "EndingPx";
-            this.EndingPx.Size = new System.Drawing.Size(56, 20);
+            this.EndingPx.Size = new System.Drawing.Size(75, 22);
             this.EndingPx.TabIndex = 22;
             this.EndingPx.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.EndingPx.Value = new decimal(new int[] {
@@ -315,26 +332,29 @@
             // TrueTypeRenderingHint
             // 
             this.TrueTypeRenderingHint.FormattingEnabled = true;
-            this.TrueTypeRenderingHint.Location = new System.Drawing.Point(0, 146);
+            this.TrueTypeRenderingHint.Location = new System.Drawing.Point(11, 177);
+            this.TrueTypeRenderingHint.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TrueTypeRenderingHint.Name = "TrueTypeRenderingHint";
-            this.TrueTypeRenderingHint.Size = new System.Drawing.Size(244, 21);
+            this.TrueTypeRenderingHint.Size = new System.Drawing.Size(324, 24);
             this.TrueTypeRenderingHint.TabIndex = 30;
             // 
             // FontStyleCB
             // 
             this.FontStyleCB.FormattingEnabled = true;
-            this.FontStyleCB.Location = new System.Drawing.Point(0, 108);
+            this.FontStyleCB.Location = new System.Drawing.Point(11, 133);
+            this.FontStyleCB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FontStyleCB.Name = "FontStyleCB";
-            this.FontStyleCB.Size = new System.Drawing.Size(244, 21);
+            this.FontStyleCB.Size = new System.Drawing.Size(324, 24);
             this.FontStyleCB.TabIndex = 31;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(259, 105);
+            this.label3.Location = new System.Drawing.Point(345, 173);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 21);
+            this.label3.Size = new System.Drawing.Size(107, 28);
             this.label3.TabIndex = 32;
             this.label3.Text = "Font Style";
             // 
@@ -342,9 +362,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(262, 146);
+            this.label4.Location = new System.Drawing.Point(345, 133);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(205, 21);
+            this.label4.Size = new System.Drawing.Size(254, 28);
             this.label4.TabIndex = 33;
             this.label4.Text = "True Type Rendering Hint";
             // 
@@ -352,27 +373,30 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(415, 66);
+            this.label5.Location = new System.Drawing.Point(552, 78);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(147, 21);
+            this.label5.Size = new System.Drawing.Size(183, 28);
             this.label5.TabIndex = 34;
             this.label5.Text = "Font Size in Pixels";
             // 
             // ImagePlaneTypeCB
             // 
             this.ImagePlaneTypeCB.FormattingEnabled = true;
-            this.ImagePlaneTypeCB.Location = new System.Drawing.Point(9, 22);
+            this.ImagePlaneTypeCB.Location = new System.Drawing.Point(12, 27);
+            this.ImagePlaneTypeCB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ImagePlaneTypeCB.Name = "ImagePlaneTypeCB";
-            this.ImagePlaneTypeCB.Size = new System.Drawing.Size(244, 21);
+            this.ImagePlaneTypeCB.Size = new System.Drawing.Size(324, 24);
             this.ImagePlaneTypeCB.TabIndex = 35;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(262, 22);
+            this.label6.Location = new System.Drawing.Point(344, 27);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(146, 21);
+            this.label6.Size = new System.Drawing.Size(179, 28);
             this.label6.TabIndex = 36;
             this.label6.Text = "Image Plane Type";
             // 
@@ -382,9 +406,11 @@
             this.groupBox1.Controls.Add(this.FontNameLabel);
             this.groupBox1.Controls.Add(this.OutputFolder);
             this.groupBox1.Controls.Add(this.TargetFolderLabel);
-            this.groupBox1.Location = new System.Drawing.Point(7, 81);
+            this.groupBox1.Location = new System.Drawing.Point(9, 100);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(581, 116);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(775, 143);
             this.groupBox1.TabIndex = 37;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Font Output Setup";
@@ -401,9 +427,11 @@
             this.groupBox2.Controls.Add(this.FontComboBox);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.FontSize);
-            this.groupBox2.Location = new System.Drawing.Point(7, 205);
+            this.groupBox2.Location = new System.Drawing.Point(9, 252);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(581, 173);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(775, 213);
             this.groupBox2.TabIndex = 38;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Font Generation Options";
@@ -412,9 +440,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(259, 67);
+            this.label7.Location = new System.Drawing.Point(345, 82);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(44, 21);
+            this.label7.Size = new System.Drawing.Size(54, 28);
             this.label7.TabIndex = 39;
             this.label7.Text = "Font";
             // 
@@ -426,9 +455,11 @@
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.BuildFontButton);
-            this.groupBox3.Location = new System.Drawing.Point(7, 384);
+            this.groupBox3.Location = new System.Drawing.Point(9, 473);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(581, 147);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Size = new System.Drawing.Size(775, 181);
             this.groupBox3.TabIndex = 39;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Manual Font Generation";
@@ -439,9 +470,11 @@
             this.groupBox4.Controls.Add(this.BuiladAll_TT_Button);
             this.groupBox4.Controls.Add(this.StartingPx);
             this.groupBox4.Controls.Add(this.EndingPx);
-            this.groupBox4.Location = new System.Drawing.Point(7, 537);
+            this.groupBox4.Location = new System.Drawing.Point(9, 661);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(581, 103);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Size = new System.Drawing.Size(775, 127);
             this.groupBox4.TabIndex = 40;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "True Type Font Generation";
@@ -449,9 +482,11 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.WorkFlowCB);
-            this.groupBox5.Location = new System.Drawing.Point(7, 12);
+            this.groupBox5.Location = new System.Drawing.Point(9, 15);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(581, 63);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Size = new System.Drawing.Size(775, 78);
             this.groupBox5.TabIndex = 41;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Workflow Select";
@@ -463,17 +498,18 @@
             this.WorkFlowCB.Items.AddRange(new object[] {
             "Manual Font Generation",
             "True Type Font Generation"});
-            this.WorkFlowCB.Location = new System.Drawing.Point(5, 20);
+            this.WorkFlowCB.Location = new System.Drawing.Point(7, 25);
+            this.WorkFlowCB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.WorkFlowCB.Name = "WorkFlowCB";
-            this.WorkFlowCB.Size = new System.Drawing.Size(557, 38);
+            this.WorkFlowCB.Size = new System.Drawing.Size(741, 44);
             this.WorkFlowCB.TabIndex = 0;
             this.WorkFlowCB.SelectedIndexChanged += new System.EventHandler(this.WorkFlowCB_SelectedIndexChanged);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1152, 648);
+            this.ClientSize = new System.Drawing.Size(1533, 786);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -481,8 +517,9 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.OutputTextBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1168, 686);
-            this.MinimumSize = new System.Drawing.Size(1168, 686);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximumSize = new System.Drawing.Size(1551, 833);
+            this.MinimumSize = new System.Drawing.Size(1551, 833);
             this.Name = "MainForm";
             this.Text = "eGFX Font Builder";
             this.Load += new System.EventHandler(this.Form1_Load);
