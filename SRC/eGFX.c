@@ -94,14 +94,7 @@ void eGFX_PutPixel(eGFX_ImagePlane *Image,
             case  eGFX_IMAGE_PLANE_32BPP:
                 MemWidthInBytes  = Image->SizeX << 2;
                 Offset = (y * MemWidthInBytes) + (x<<2);
-                if(PS == eGFX_PIXEL_RANDOM)
-                {
-                    *(uint32_t *)(Image->Data + Offset) = (uint32_t)(rand());
-                }
-                else
-                {
-                    *(uint32_t *)(Image->Data + Offset) = (uint32_t)(PS);
-                }
+                *(uint32_t *)(Image->Data + Offset) = (uint32_t)(PS);
                break;
 				
             default:
